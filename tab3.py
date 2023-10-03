@@ -15,14 +15,14 @@ def render_tab(df):
         hovertext=[ f'{y} $' for y in x[col]]))
 
     data = bars
-    fig = go.Figure(data=data,layout=go.Layout(title='Sprzedaz',barmode='stack'))
+    fig = go.Figure(data=data,layout=go.Layout(barmode='stack'))
 
     
 
-    layout=html.Div(children=[html.Div([html.H1('Sprzedaz wedlug dni tygodnia',style={'align-text':'center'}),
+    layout=html.Div(children=[html.Div([html.H1('Sprzedaz wedlug dni tygodnia',style={'align-text':'center','font-size':'35px'}),
                                         dcc.Graph(id='days_graph',figure=fig)],style={'width':"50%",'align-text':'center'}),
-                                        html.Div([html.H1('Struktura kupujacych dla poszczegolnych sklepow'),
-                                                  html.Hr(),html.Div([dcc.RadioItems([i for i in df['Store_type'].unique()], 'e-Shop',id='radio',inline=True),
+                                        html.Div([html.H1('Struktura kupujacych dla poszczegolnych sklepow',style={'font-size':'35px'}),
+                                                  html.Br(),html.Div([dcc.RadioItems([i for i in df['Store_type'].unique()], 'Flagship store',id='radio',inline=True),
                                                                       dcc.Graph(figure={},id='histogram')])],style={'width':'50%'})
                             
                               ],style={'display':'flex'})

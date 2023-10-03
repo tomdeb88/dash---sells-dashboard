@@ -3,6 +3,7 @@ import datetime as dt
 import os
 from dash import dash,dcc,html,Input,Output,State
 import plotly.graph_objects as go
+import plotly.express as px
 import dash_auth
 import tab1,tab2,tab3
 from datetime import datetime
@@ -59,7 +60,7 @@ app = dash.Dash(__name__,external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([html.Div([dcc.Tabs(id='tabs',value='tab-1',children=[
                             dcc.Tab(label='Sprzedaż globalna',value='tab-1'),
-                            dcc.Tab(label='Produkty',value='tab-2'),dcc.Tab(label='Kanaly Sprzedazy',value='tab-3')
+                            dcc.Tab(label='Produkty',value='tab-2'),dcc.Tab(label='Charakterystyka Sprzedazy',value='tab-3')
                             ]),
                             html.Div(id='tabs-content')
                     ],style={'width':'80%','margin':'auto'})],
@@ -131,7 +132,7 @@ def tab2_barh_prod_subcat(chosen_cat):
 
 
 
-import plotly.express as px
+
 
 
 ##tab 3
@@ -139,7 +140,7 @@ import plotly.express as px
 
 def age_hist(store):
     grouped=df.merged
-    grouped["DOB"]=pd.to_datetime(grouped['DOB'])
+    grouped["DOB"]=pd.to_datetime(grouped['DOB'],dayfirst=True)
     
     grouped["age"] = grouped["DOB"].apply(lambda x : (datetime.now().year - x.year))
     grouped=df.merged[df.merged['Store_type']==store][['age','Gender']]
