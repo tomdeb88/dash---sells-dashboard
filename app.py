@@ -146,9 +146,6 @@ def age_hist(store):
     grouped=df.merged[df.merged['Store_type']==store][['age','Gender']]
     grouped['Gender']=grouped['Gender'].map({'F':'Kobiety','M':'Mezczyzni'})
 
-    # trace=go.Histogram(x=grouped['age'],bin)
-    # layout = go.Layout(title='ok')
-    # fig=go.Figure(data=trace,layout=layout)
 
     fig=px.histogram(grouped,x='age',color='Gender',nbins=14,barmode='group')
     fig.update_layout(bargap=0.3)

@@ -19,13 +19,13 @@ def render_tab(df):
 
     
 
-    layout=html.Div(children=[html.Div([html.H1('Sprzedaz wedlug dni tygodnia',style={'align-text':'center','font-size':'35px'}),
-                                        dcc.Graph(id='days_graph',figure=fig)],style={'width':"50%",'align-text':'center'}),
-                                        html.Div([html.H1('Struktura kupujacych dla poszczegolnych sklepow',style={'font-size':'35px'}),
+    layout=html.Div(children=[html.Div([html.H1('Sprzedaz wedlug dni tygodnia',style={'font-size':'35px','margin-bottom':'30px'}),
+                                        dcc.Graph(id='days_graph',figure=fig,style={'height':'600px'})],style={'width':"50%"}),
+                                        html.Div([html.H1('Charakterystyka kupujacych',style={'font-size':'35px'}),
                                                   html.Br(),html.Div([dcc.RadioItems([i for i in df['Store_type'].unique()], 'Flagship store',id='radio',inline=True),
-                                                                      dcc.Graph(figure={},id='histogram')])],style={'width':'50%'})
+                                                                      dcc.Graph(figure={},id='histogram',style={'height':'570px'})])],style={'width':'50%'})
                             
-                              ],style={'display':'flex'})
+                              ],style={'display':'flex','padding-top':'30px','text-align':'center'})
        
  
 
